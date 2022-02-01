@@ -1,0 +1,22 @@
+.root {
+    width: 60%;
+}
+.header {
+    text-align: center;
+}
+.title {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.fetchBtn {
+    background-color: limegreen;
+    color: white;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 780px) {
+    .root {
+        width: 100%;
+    }
+}
