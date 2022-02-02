@@ -3,6 +3,7 @@
 }
 .header {
     text-align: center;
+    background-color: lightblue;
 }
 .title {
     display: inline-block;
@@ -13,6 +14,25 @@
     background-color: limegreen;
     color: white;
     margin-right: 10px;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.error {
+    color: red;
+}
+
+.emptyUsers {
+    color: green;
+}
+
+.loading {
+    color: blue;
 }
 
 @media screen and (max-width: 780px) {

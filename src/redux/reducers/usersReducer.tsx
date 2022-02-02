@@ -1,3 +1,4 @@
+import { SELECTED_LIST_INFO, FETCH_USERS_LIST } from "../constants";
 interface IUserInfo {
     age: number;
     gender: string;
@@ -15,9 +16,13 @@ export interface IUser {
     isChecked?: boolean;
 }
 
+export interface ISelectedUserIdList {
+    [key: number]: boolean;
+}
+
 export interface IUsersList {
     users: IUser[];
-    selectedUserIdList: {};
+    selectedUserIdList: ISelectedUserIdList;
 }
 
 const initialState: IUsersList = {
@@ -26,7 +31,7 @@ const initialState: IUsersList = {
 };
 
 const createSelectedList = (usersList: IUser[]) => {
-    let defaultSelected: any = {};
+    let defaultSelected: ISelectedUserIdList = {};
     usersList.forEach((user: IUser) => {
         defaultSelected[user.id] = false;
     });
@@ -38,16 +43,16 @@ const UsersReducer = (state = initialState, action: any) =>
 {
     switch (action.type)
     {
-        case "FETCH_USERS_LIST":
+        case FETCH_USERS_LIST:
             return {
                 ...state,
-                users: action.users,
-                selectedUserIdList: createSelectedList(action.users),
+                users: action.payload.users,
+                selectedUserIdList: createSelectedList(action.payload.users),
             };
-        case "SELECTED_LIST_INFO":
+        case SELECTED_LIST_INFO:
             return {
                 ...state,
-                selectedUserIdList:  {...action.selectedUserIdList}
+                selectedUserIdList:  {...action.payload.selectedUserIdList}
             };
         default:
             return { ...state }
